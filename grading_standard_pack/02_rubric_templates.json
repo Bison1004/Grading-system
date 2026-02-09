@@ -1,0 +1,950 @@
+[
+  {
+    "rubricId": "tmpl_short_past_tense_v1",
+    "questionType": "short",
+    "maxScore": 5,
+    "scoring": {
+      "base": 0,
+      "capMin": 0,
+      "capMax": 5,
+      "rules": [
+        {
+          "id": "r1",
+          "type": "must_include_any",
+          "points": 3,
+          "targets": [
+            "went",
+            "saw",
+            "was",
+            "were",
+            "did"
+          ],
+          "message_ko": "과거형 동사가 포함되어야 합니다(문항에 맞는 과거형)."
+        },
+        {
+          "id": "r2",
+          "type": "must_include_any",
+          "points": 2,
+          "targets": [
+            "yesterday",
+            "last night",
+            "ago",
+            "in 2025"
+          ],
+          "message_ko": "과거 시점을 나타내는 표현이 포함되어야 합니다."
+        },
+        {
+          "id": "r3",
+          "type": "penalty_if_match",
+          "points": -2,
+          "patterns": [
+            "\\\\bgo\\\\b",
+            "\\\\bis\\\\b"
+          ],
+          "message_ko": "과거 문장인데 현재형이 남아 있어 감점됩니다."
+        }
+      ],
+      "normalize": {
+        "caseFold": true,
+        "stripPunctuation": true,
+        "collapseSpaces": true
+      }
+    },
+    "feedback": {
+      "language": "ko",
+      "style": "middle_school_friendly",
+      "maxSentences": 6
+    }
+  },
+  {
+    "rubricId": "tmpl_short_third_person_s_v1",
+    "questionType": "short",
+    "maxScore": 3,
+    "scoring": {
+      "base": 0,
+      "capMin": 0,
+      "capMax": 3,
+      "rules": [
+        {
+          "id": "r1",
+          "type": "regex_match",
+          "points": 2,
+          "patterns": [
+            "\\\\b(he|she|it)\\\\s+\\\\w+s\\\\b"
+          ],
+          "message_ko": "3인칭 단수 주어 + 동사(s) 형태가 충족되어야 합니다."
+        },
+        {
+          "id": "r2",
+          "type": "penalty_if_match",
+          "points": -1,
+          "patterns": [
+            "\\\\b(he|she|it)\\\\s+\\\\w+\\\\b(?!s\\\\b)"
+          ],
+          "message_ko": "3인칭 단수인데 동사에 s가 붙지 않아 감점됩니다."
+        }
+      ],
+      "normalize": {
+        "caseFold": true,
+        "stripPunctuation": true,
+        "collapseSpaces": true
+      }
+    },
+    "feedback": {
+      "language": "ko",
+      "style": "middle_school_friendly",
+      "maxSentences": 6
+    }
+  },
+  {
+    "rubricId": "tmpl_short_preposition_v1",
+    "questionType": "short",
+    "maxScore": 4,
+    "scoring": {
+      "base": 0,
+      "capMin": 0,
+      "capMax": 4,
+      "rules": [
+        {
+          "id": "r1",
+          "type": "must_include_any",
+          "points": 2,
+          "targets": [
+            "in",
+            "on",
+            "at"
+          ],
+          "message_ko": "문항에서 요구하는 전치사(in/on/at 등)가 포함되어야 합니다."
+        },
+        {
+          "id": "r2",
+          "type": "accept_synonym_groups",
+          "points": 2,
+          "groups": [
+            [
+              "in",
+              "inside"
+            ],
+            [
+              "on",
+              "onto"
+            ],
+            [
+              "at",
+              "by"
+            ]
+          ],
+          "requireAllGroups": false,
+          "message_ko": "전치사 의미가 적절하면 점수를 부여합니다."
+        }
+      ],
+      "normalize": {
+        "caseFold": true,
+        "stripPunctuation": true,
+        "collapseSpaces": true
+      }
+    },
+    "feedback": {
+      "language": "ko",
+      "style": "middle_school_friendly",
+      "maxSentences": 6
+    }
+  },
+  {
+    "rubricId": "tmpl_short_comparative_v1",
+    "questionType": "short",
+    "maxScore": 4,
+    "scoring": {
+      "base": 0,
+      "capMin": 0,
+      "capMax": 4,
+      "rules": [
+        {
+          "id": "r1",
+          "type": "regex_match",
+          "points": 2,
+          "patterns": [
+            "\\\\bmore\\\\s+\\\\w+\\\\b",
+            "\\\\b\\\\w+er\\\\b"
+          ],
+          "message_ko": "비교급 형태(more ~ / ~er)가 사용되어야 합니다."
+        },
+        {
+          "id": "r2",
+          "type": "must_include_any",
+          "points": 2,
+          "targets": [
+            "than"
+          ],
+          "message_ko": "비교 구문에서 than이 필요하면 포함되어야 합니다."
+        }
+      ],
+      "normalize": {
+        "caseFold": true,
+        "stripPunctuation": true,
+        "collapseSpaces": true
+      }
+    },
+    "feedback": {
+      "language": "ko",
+      "style": "middle_school_friendly",
+      "maxSentences": 6
+    }
+  },
+  {
+    "rubricId": "tmpl_short_superlative_v1",
+    "questionType": "short",
+    "maxScore": 4,
+    "scoring": {
+      "base": 0,
+      "capMin": 0,
+      "capMax": 4,
+      "rules": [
+        {
+          "id": "r1",
+          "type": "regex_match",
+          "points": 2,
+          "patterns": [
+            "\\\\bmost\\\\s+\\\\w+\\\\b",
+            "\\\\b\\\\w+est\\\\b"
+          ],
+          "message_ko": "최상급 형태(most ~ / ~est)가 사용되어야 합니다."
+        },
+        {
+          "id": "r2",
+          "type": "must_include_any",
+          "points": 2,
+          "targets": [
+            "in",
+            "of"
+          ],
+          "message_ko": "최상급 범위를 나타내는 전치사(in/of)가 필요하면 포함되어야 합니다."
+        }
+      ],
+      "normalize": {
+        "caseFold": true,
+        "stripPunctuation": true,
+        "collapseSpaces": true
+      }
+    },
+    "feedback": {
+      "language": "ko",
+      "style": "middle_school_friendly",
+      "maxSentences": 6
+    }
+  },
+  {
+    "rubricId": "tmpl_essay_opinion_2sent_v1",
+    "questionType": "essay",
+    "maxScore": 10,
+    "scoring": {
+      "base": 0,
+      "capMin": 0,
+      "capMax": 10,
+      "rules": [
+        {
+          "id": "r1",
+          "type": "sentence_count_min",
+          "points": 2,
+          "minSentences": 2,
+          "message_ko": "의견 + 이유를 최소 2문장으로 작성해야 합니다."
+        },
+        {
+          "id": "r2",
+          "type": "must_include_any",
+          "points": 2,
+          "targets": [
+            "because",
+            "so",
+            "therefore"
+          ],
+          "message_ko": "이유를 나타내는 연결어가 포함되면 좋습니다."
+        },
+        {
+          "id": "r3",
+          "type": "length_range",
+          "points": 2,
+          "minWords": 20,
+          "maxWords": 60,
+          "message_ko": "분량 요건(20~60단어)을 충족해야 합니다."
+        },
+        {
+          "id": "r4",
+          "type": "keyword_coverage_scaled",
+          "points": 4,
+          "keywords": [
+            "opinion",
+            "reason",
+            "example"
+          ],
+          "minCoverage": 0.34,
+          "message_ko": "핵심 요소(의견/이유/예시)가 포함될수록 점수가 올라갑니다."
+        }
+      ],
+      "normalize": {
+        "caseFold": true,
+        "stripPunctuation": true,
+        "collapseSpaces": true
+      }
+    },
+    "feedback": {
+      "language": "ko",
+      "style": "middle_school_friendly",
+      "maxSentences": 7
+    }
+  },
+  {
+    "rubricId": "tmpl_essay_summary_keywords_v1",
+    "questionType": "essay",
+    "maxScore": 8,
+    "scoring": {
+      "base": 0,
+      "capMin": 0,
+      "capMax": 8,
+      "rules": [
+        {
+          "id": "r1",
+          "type": "keyword_coverage_scaled",
+          "points": 6,
+          "keywords": [
+            "main",
+            "idea",
+            "problem",
+            "solution",
+            "result"
+          ],
+          "minCoverage": 0.4,
+          "message_ko": "핵심 내용(주제/문제/해결/결과)을 포함할수록 점수가 높습니다."
+        },
+        {
+          "id": "r2",
+          "type": "length_range",
+          "points": 2,
+          "minWords": 15,
+          "maxWords": 45,
+          "message_ko": "요약 분량(15~45단어)을 맞춰야 합니다."
+        }
+      ],
+      "normalize": {
+        "caseFold": true,
+        "stripPunctuation": true,
+        "collapseSpaces": true
+      }
+    },
+    "feedback": {
+      "language": "ko",
+      "style": "middle_school_friendly",
+      "maxSentences": 6
+    }
+  },
+  {
+    "rubricId": "tmpl_essay_cause_effect_v1",
+    "questionType": "essay",
+    "maxScore": 8,
+    "scoring": {
+      "base": 0,
+      "capMin": 0,
+      "capMax": 8,
+      "rules": [
+        {
+          "id": "r1",
+          "type": "must_include_any",
+          "points": 2,
+          "targets": [
+            "because",
+            "since",
+            "as"
+          ],
+          "message_ko": "원인 표현(because/since/as)이 포함되어야 합니다."
+        },
+        {
+          "id": "r2",
+          "type": "must_include_any",
+          "points": 2,
+          "targets": [
+            "so",
+            "therefore",
+            "as a result"
+          ],
+          "message_ko": "결과 표현(so/therefore/as a result)이 포함되어야 합니다."
+        },
+        {
+          "id": "r3",
+          "type": "keyword_coverage_scaled",
+          "points": 4,
+          "keywords": [
+            "cause",
+            "effect",
+            "result"
+          ],
+          "minCoverage": 0.34,
+          "message_ko": "원인과 결과의 핵심 단어를 포함할수록 점수가 올라갑니다."
+        }
+      ],
+      "normalize": {
+        "caseFold": true,
+        "stripPunctuation": true,
+        "collapseSpaces": true
+      }
+    },
+    "feedback": {
+      "language": "ko",
+      "style": "middle_school_friendly",
+      "maxSentences": 6
+    }
+  },
+  {
+    "rubricId": "tmpl_essay_compare_contrast_v1",
+    "questionType": "essay",
+    "maxScore": 8,
+    "scoring": {
+      "base": 0,
+      "capMin": 0,
+      "capMax": 8,
+      "rules": [
+        {
+          "id": "r1",
+          "type": "must_include_any",
+          "points": 2,
+          "targets": [
+            "both",
+            "similar",
+            "same"
+          ],
+          "message_ko": "공통점 표현이 포함되면 가점됩니다."
+        },
+        {
+          "id": "r2",
+          "type": "must_include_any",
+          "points": 2,
+          "targets": [
+            "but",
+            "however",
+            "different"
+          ],
+          "message_ko": "차이점 표현이 포함되면 가점됩니다."
+        },
+        {
+          "id": "r3",
+          "type": "sentence_count_min",
+          "points": 2,
+          "minSentences": 2,
+          "message_ko": "최소 2문장으로 비교/대조를 작성해야 합니다."
+        },
+        {
+          "id": "r4",
+          "type": "length_range",
+          "points": 2,
+          "minWords": 18,
+          "maxWords": 60,
+          "message_ko": "분량 요건을 충족해야 합니다."
+        }
+      ],
+      "normalize": {
+        "caseFold": true,
+        "stripPunctuation": true,
+        "collapseSpaces": true
+      }
+    },
+    "feedback": {
+      "language": "ko",
+      "style": "middle_school_friendly",
+      "maxSentences": 6
+    }
+  },
+  {
+    "rubricId": "tmpl_short_translation_ko_to_en_v1",
+    "questionType": "short",
+    "maxScore": 6,
+    "scoring": {
+      "base": 0,
+      "capMin": 0,
+      "capMax": 6,
+      "rules": [
+        {
+          "id": "r1",
+          "type": "keyword_coverage_scaled",
+          "points": 4,
+          "keywords": [
+            "subject",
+            "verb",
+            "object"
+          ],
+          "minCoverage": 0.34,
+          "message_ko": "핵심 문장 요소가 포함될수록 점수가 올라갑니다."
+        },
+        {
+          "id": "r2",
+          "type": "penalty_if_match",
+          "points": -1,
+          "patterns": [
+            "\\\\bI\\\\s+am\\\\s+go\\\\b",
+            "\\\\bHe\\\\s+go\\\\b"
+          ],
+          "message_ko": "기초 문법 오류가 있어 감점됩니다."
+        },
+        {
+          "id": "r3",
+          "type": "length_range",
+          "points": 2,
+          "minWords": 5,
+          "maxWords": 20,
+          "message_ko": "번역문 분량이 지나치게 짧거나 길면 감점될 수 있습니다."
+        }
+      ],
+      "normalize": {
+        "caseFold": true,
+        "stripPunctuation": true,
+        "collapseSpaces": true
+      }
+    },
+    "feedback": {
+      "language": "ko",
+      "style": "middle_school_friendly",
+      "maxSentences": 6
+    }
+  },
+  {
+    "rubricId": "tmpl_short_blank_fill_v1",
+    "questionType": "short",
+    "maxScore": 2,
+    "scoring": {
+      "base": 0,
+      "capMin": 0,
+      "capMax": 2,
+      "rules": [
+        {
+          "id": "r1",
+          "type": "must_include_any",
+          "points": 2,
+          "targets": [
+            "(answer)"
+          ],
+          "message_ko": "빈칸에 들어갈 정답 표현이 포함되어야 합니다."
+        }
+      ],
+      "normalize": {
+        "caseFold": true,
+        "stripPunctuation": true,
+        "collapseSpaces": true
+      }
+    },
+    "feedback": {
+      "language": "ko",
+      "style": "middle_school_friendly",
+      "maxSentences": 6
+    }
+  },
+  {
+    "rubricId": "tmpl_short_phrase_vocabulary_v1",
+    "questionType": "short",
+    "maxScore": 3,
+    "scoring": {
+      "base": 0,
+      "capMin": 0,
+      "capMax": 3,
+      "rules": [
+        {
+          "id": "r1",
+          "type": "accept_synonym_groups",
+          "points": 3,
+          "groups": [
+            [
+              "make a decision",
+              "decide"
+            ],
+            [
+              "give up",
+              "quit"
+            ]
+          ],
+          "requireAllGroups": false,
+          "message_ko": "의미가 같은 어휘/표현이면 정답으로 인정합니다."
+        }
+      ],
+      "normalize": {
+        "caseFold": true,
+        "stripPunctuation": true,
+        "collapseSpaces": true
+      }
+    },
+    "feedback": {
+      "language": "ko",
+      "style": "middle_school_friendly",
+      "maxSentences": 6
+    }
+  },
+  {
+    "rubricId": "tmpl_short_article_a_the_v1",
+    "questionType": "short",
+    "maxScore": 3,
+    "scoring": {
+      "base": 0,
+      "capMin": 0,
+      "capMax": 3,
+      "rules": [
+        {
+          "id": "r1",
+          "type": "regex_match",
+          "points": 2,
+          "patterns": [
+            "\\\\b(a|an|the)\\\\b"
+          ],
+          "message_ko": "관사(a/an/the)가 적절히 사용되어야 합니다."
+        },
+        {
+          "id": "r2",
+          "type": "penalty_if_match",
+          "points": -1,
+          "patterns": [
+            "\\\\bthe\\\\s+\\\\w+\\\\s+\\\\w+\\\\b"
+          ],
+          "message_ko": "관사 사용이 부적절해 감점될 수 있습니다."
+        }
+      ],
+      "normalize": {
+        "caseFold": true,
+        "stripPunctuation": true,
+        "collapseSpaces": true
+      }
+    },
+    "feedback": {
+      "language": "ko",
+      "style": "middle_school_friendly",
+      "maxSentences": 6
+    }
+  },
+  {
+    "rubricId": "tmpl_short_passive_voice_v1",
+    "questionType": "short",
+    "maxScore": 5,
+    "scoring": {
+      "base": 0,
+      "capMin": 0,
+      "capMax": 5,
+      "rules": [
+        {
+          "id": "r1",
+          "type": "regex_match",
+          "points": 3,
+          "patterns": [
+            "\\\\b(is|are|was|were)\\\\s+\\\\w+ed\\\\b",
+            "\\\\b(is|are|was|were)\\\\s+\\\\w+en\\\\b"
+          ],
+          "message_ko": "수동태(be+p.p.) 형태가 포함되어야 합니다."
+        },
+        {
+          "id": "r2",
+          "type": "must_include_any",
+          "points": 2,
+          "targets": [
+            "by"
+          ],
+          "message_ko": "행위자를 나타내는 by가 필요하면 포함되어야 합니다."
+        }
+      ],
+      "normalize": {
+        "caseFold": true,
+        "stripPunctuation": true,
+        "collapseSpaces": true
+      }
+    },
+    "feedback": {
+      "language": "ko",
+      "style": "middle_school_friendly",
+      "maxSentences": 6
+    }
+  },
+  {
+    "rubricId": "tmpl_short_present_perfect_v1",
+    "questionType": "short",
+    "maxScore": 5,
+    "scoring": {
+      "base": 0,
+      "capMin": 0,
+      "capMax": 5,
+      "rules": [
+        {
+          "id": "r1",
+          "type": "regex_match",
+          "points": 3,
+          "patterns": [
+            "\\\\b(has|have)\\\\s+\\\\w+ed\\\\b",
+            "\\\\b(has|have)\\\\s+\\\\w+en\\\\b"
+          ],
+          "message_ko": "현재완료(has/have+p.p.) 형태가 포함되어야 합니다."
+        },
+        {
+          "id": "r2",
+          "type": "must_include_any",
+          "points": 2,
+          "targets": [
+            "already",
+            "yet",
+            "since",
+            "for"
+          ],
+          "message_ko": "현재완료에서 자주 쓰는 부사/전치사가 포함되면 가점됩니다."
+        }
+      ],
+      "normalize": {
+        "caseFold": true,
+        "stripPunctuation": true,
+        "collapseSpaces": true
+      }
+    },
+    "feedback": {
+      "language": "ko",
+      "style": "middle_school_friendly",
+      "maxSentences": 6
+    }
+  },
+  {
+    "rubricId": "tmpl_essay_letter_email_format_v1",
+    "questionType": "essay",
+    "maxScore": 10,
+    "scoring": {
+      "base": 0,
+      "capMin": 0,
+      "capMax": 10,
+      "rules": [
+        {
+          "id": "r1",
+          "type": "regex_match",
+          "points": 2,
+          "patterns": [
+            "\\\\bDear\\\\b"
+          ],
+          "message_ko": "이메일/편지 서두(Dear~)가 있어야 합니다."
+        },
+        {
+          "id": "r2",
+          "type": "regex_match",
+          "points": 2,
+          "patterns": [
+            "\\\\bSincerely\\\\b|\\\\bBest\\\\b|\\\\bRegards\\\\b"
+          ],
+          "message_ko": "마무리 인사(Sincerely/Best/Regards)가 있어야 합니다."
+        },
+        {
+          "id": "r3",
+          "type": "sentence_count_min",
+          "points": 2,
+          "minSentences": 4,
+          "message_ko": "본문은 최소 4문장 이상 작성해야 합니다."
+        },
+        {
+          "id": "r4",
+          "type": "length_range",
+          "points": 2,
+          "minWords": 40,
+          "maxWords": 120,
+          "message_ko": "분량 요건(40~120단어)을 충족해야 합니다."
+        },
+        {
+          "id": "r5",
+          "type": "keyword_coverage_scaled",
+          "points": 2,
+          "keywords": [
+            "purpose",
+            "detail",
+            "request",
+            "thanks"
+          ],
+          "minCoverage": 0.25,
+          "message_ko": "목적/상세/요청/감사 요소가 포함될수록 점수가 올라갑니다."
+        }
+      ],
+      "normalize": {
+        "caseFold": true,
+        "stripPunctuation": true,
+        "collapseSpaces": true
+      }
+    },
+    "feedback": {
+      "language": "ko",
+      "style": "polite_teacher",
+      "maxSentences": 8
+    }
+  },
+  {
+    "rubricId": "tmpl_essay_pros_cons_v1",
+    "questionType": "essay",
+    "maxScore": 10,
+    "scoring": {
+      "base": 0,
+      "capMin": 0,
+      "capMax": 10,
+      "rules": [
+        {
+          "id": "r1",
+          "type": "must_include_any",
+          "points": 2,
+          "targets": [
+            "pros",
+            "advantages",
+            "good point"
+          ],
+          "message_ko": "장점(Pros/advantages) 표현이 포함되어야 합니다."
+        },
+        {
+          "id": "r2",
+          "type": "must_include_any",
+          "points": 2,
+          "targets": [
+            "cons",
+            "disadvantages",
+            "bad point"
+          ],
+          "message_ko": "단점(Cons/disadvantages) 표현이 포함되어야 합니다."
+        },
+        {
+          "id": "r3",
+          "type": "sentence_count_min",
+          "points": 2,
+          "minSentences": 3,
+          "message_ko": "장점/단점을 최소 3문장 이상으로 작성해야 합니다."
+        },
+        {
+          "id": "r4",
+          "type": "keyword_coverage_scaled",
+          "points": 4,
+          "keywords": [
+            "reason",
+            "example",
+            "conclusion"
+          ],
+          "minCoverage": 0.34,
+          "message_ko": "이유/예시/결론이 포함될수록 점수가 높습니다."
+        }
+      ],
+      "normalize": {
+        "caseFold": true,
+        "stripPunctuation": true,
+        "collapseSpaces": true
+      }
+    },
+    "feedback": {
+      "language": "ko",
+      "style": "middle_school_friendly",
+      "maxSentences": 6
+    }
+  },
+  {
+    "rubricId": "tmpl_essay_error_correction_explain_v1",
+    "questionType": "essay",
+    "maxScore": 8,
+    "scoring": {
+      "base": 0,
+      "capMin": 0,
+      "capMax": 8,
+      "rules": [
+        {
+          "id": "r1",
+          "type": "must_include_any",
+          "points": 2,
+          "targets": [
+            "because",
+            "it should be",
+            "correct form"
+          ],
+          "message_ko": "왜 틀렸는지 설명하는 표현이 포함되어야 합니다."
+        },
+        {
+          "id": "r2",
+          "type": "keyword_coverage_scaled",
+          "points": 4,
+          "keywords": [
+            "tense",
+            "subject-verb",
+            "article",
+            "preposition"
+          ],
+          "minCoverage": 0.25,
+          "message_ko": "오류 유형(시제/수일치/관사/전치사)을 정확히 언급할수록 점수가 높습니다."
+        },
+        {
+          "id": "r3",
+          "type": "length_range",
+          "points": 2,
+          "minWords": 20,
+          "maxWords": 70,
+          "message_ko": "설명 분량을 충족해야 합니다."
+        }
+      ],
+      "normalize": {
+        "caseFold": true,
+        "stripPunctuation": true,
+        "collapseSpaces": true
+      }
+    },
+    "feedback": {
+      "language": "ko",
+      "style": "middle_school_friendly",
+      "maxSentences": 6
+    }
+  },
+  {
+    "rubricId": "tmpl_short_sentence_reorder_v1",
+    "questionType": "short",
+    "maxScore": 5,
+    "scoring": {
+      "base": 0,
+      "capMin": 0,
+      "capMax": 5,
+      "rules": [
+        {
+          "id": "r1",
+          "type": "order_sensitive_tokens",
+          "points": 5,
+          "expectedTokens": [
+            "(token1)",
+            "(token2)",
+            "(token3)"
+          ],
+          "partialByLCS": true,
+          "message_ko": "단어 배열이 정답 어순에 가까울수록 점수가 부여됩니다."
+        }
+      ],
+      "normalize": {
+        "caseFold": true,
+        "stripPunctuation": true,
+        "collapseSpaces": true
+      }
+    },
+    "feedback": {
+      "language": "ko",
+      "style": "middle_school_friendly",
+      "maxSentences": 6
+    }
+  },
+  {
+    "rubricId": "tmpl_short_ocr_gate_only_v1",
+    "questionType": "short",
+    "maxScore": 0,
+    "scoring": {
+      "base": 0,
+      "capMin": 0,
+      "capMax": 0,
+      "rules": [
+        {
+          "id": "r1",
+          "type": "ocr_confidence_gate",
+          "minConfidence": 0.65,
+          "action": "needs_review",
+          "message_ko": "인식 신뢰도가 낮아 자동 채점 대신 교사 검토가 필요합니다."
+        }
+      ],
+      "normalize": {
+        "caseFold": true,
+        "stripPunctuation": true,
+        "collapseSpaces": true
+      }
+    },
+    "feedback": {
+      "language": "ko",
+      "style": "middle_school_friendly",
+      "maxSentences": 6
+    }
+  }
+]

@@ -1,0 +1,217 @@
+[
+  {
+    "questionId": "q1",
+    "no": 1,
+    "type": "mcq",
+    "points": 2,
+    "prompt": "다음 중 밑줄 친 대명사의 쓰임이 옳은 것은?",
+    "answerRegion": {
+      "page": 1,
+      "bbox": {
+        "x": 0.08,
+        "y": 0.15,
+        "w": 0.84,
+        "h": 0.05
+      }
+    }
+  },
+  {
+    "questionId": "q2",
+    "no": 2,
+    "type": "mcq",
+    "points": 2,
+    "prompt": "빈칸에 들어갈 가장 알맞은 말은?",
+    "answerRegion": {
+      "page": 1,
+      "bbox": {
+        "x": 0.08,
+        "y": 0.22,
+        "w": 0.84,
+        "h": 0.05
+      }
+    }
+  },
+  {
+    "questionId": "q3",
+    "no": 3,
+    "type": "short",
+    "points": 5,
+    "prompt": "다음 문장을 과거형으로 고치시오.",
+    "answerRegion": {
+      "page": 1,
+      "bbox": {
+        "x": 0.08,
+        "y": 0.3,
+        "w": 0.84,
+        "h": 0.07
+      }
+    },
+    "grading": {
+      "method": "rubric",
+      "rubricId": "tmpl_short_past_tense_v1",
+      "strictness": "medium"
+    },
+    "model": {
+      "modelAnswer": "He went to school yesterday.",
+      "commonMistakes": [
+        {
+          "pattern": "He go to school yesterday",
+          "hint": "go의 과거형은 went 입니다."
+        }
+      ]
+    }
+  },
+  {
+    "questionId": "q4",
+    "no": 4,
+    "type": "short",
+    "points": 3,
+    "prompt": "괄호 안 동사를 알맞게 고치시오. (He ___ (play) soccer.)",
+    "answerRegion": {
+      "page": 1,
+      "bbox": {
+        "x": 0.08,
+        "y": 0.4,
+        "w": 0.84,
+        "h": 0.06
+      }
+    },
+    "grading": {
+      "method": "rubric",
+      "rubricId": "tmpl_short_third_person_s_v1",
+      "strictness": "high"
+    },
+    "model": {
+      "modelAnswer": "plays"
+    }
+  },
+  {
+    "questionId": "q5",
+    "no": 5,
+    "type": "short",
+    "points": 5,
+    "prompt": "다음 단어를 올바른 어순으로 배열하시오: (to / went / I / school)",
+    "answerRegion": {
+      "page": 1,
+      "bbox": {
+        "x": 0.08,
+        "y": 0.48,
+        "w": 0.84,
+        "h": 0.06
+      }
+    },
+    "grading": {
+      "method": "rubric",
+      "rubricId": "tmpl_short_sentence_reorder_v1",
+      "strictness": "high"
+    },
+    "model": {
+      "modelAnswer": "I went to school."
+    }
+  },
+  {
+    "questionId": "q6",
+    "no": 6,
+    "type": "short",
+    "points": 5,
+    "prompt": "다음 문장을 수동태로 바꾸시오.",
+    "answerRegion": {
+      "page": 1,
+      "bbox": {
+        "x": 0.08,
+        "y": 0.56,
+        "w": 0.84,
+        "h": 0.07
+      }
+    },
+    "grading": {
+      "method": "rubric",
+      "rubricId": "tmpl_short_passive_voice_v1",
+      "strictness": "medium"
+    }
+  },
+  {
+    "questionId": "q7",
+    "no": 7,
+    "type": "short",
+    "points": 5,
+    "prompt": "다음 문장을 현재완료로 바꾸시오.",
+    "answerRegion": {
+      "page": 1,
+      "bbox": {
+        "x": 0.08,
+        "y": 0.65,
+        "w": 0.84,
+        "h": 0.07
+      }
+    },
+    "grading": {
+      "method": "rubric",
+      "rubricId": "tmpl_short_present_perfect_v1",
+      "strictness": "medium"
+    }
+  },
+  {
+    "questionId": "q8",
+    "no": 8,
+    "type": "essay",
+    "points": 10,
+    "prompt": "다음 주제에 대해 2문장 이상으로 의견을 쓰시오: '스마트폰 사용은 학습에 도움이 되는가?'",
+    "answerRegion": {
+      "page": 1,
+      "bbox": {
+        "x": 0.08,
+        "y": 0.74,
+        "w": 0.84,
+        "h": 0.18
+      }
+    },
+    "grading": {
+      "method": "rubric",
+      "rubricId": "tmpl_essay_opinion_2sent_v1",
+      "strictness": "medium"
+    }
+  },
+  {
+    "questionId": "q9",
+    "no": 9,
+    "type": "essay",
+    "points": 8,
+    "prompt": "지문을 1~2문장으로 요약하시오.",
+    "answerRegion": {
+      "page": 1,
+      "bbox": {
+        "x": 0.08,
+        "y": 0.93,
+        "w": 0.84,
+        "h": 0.2
+      }
+    },
+    "grading": {
+      "method": "rubric",
+      "rubricId": "tmpl_essay_summary_keywords_v1",
+      "strictness": "medium"
+    }
+  },
+  {
+    "questionId": "q10",
+    "no": 10,
+    "type": "short",
+    "points": 5,
+    "prompt": "다음 한국어 문장을 영어로 번역하시오: '나는 어제 친구와 도서관에 갔다.'",
+    "answerRegion": {
+      "page": 1,
+      "bbox": {
+        "x": 0.08,
+        "y": 1.15,
+        "w": 0.84,
+        "h": 0.1
+      }
+    },
+    "grading": {
+      "method": "rubric",
+      "rubricId": "tmpl_short_translation_ko_to_en_v1",
+      "strictness": "medium"
+    }
+  }
+]

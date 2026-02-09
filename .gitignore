@@ -1,0 +1,46 @@
+# Dependencies
+node_modules/
+package-lock.json
+
+# Environment
+.env
+.env.local
+.env.production
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Uploads
+backend/uploads/
+
+# Large library packs (pillow source etc)
+grading_standard_pack/pillow-12.1.0/
+grading_standard_pack/demo_runner/
+*.zip
+
+# Test images
+test_exam.jpg
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Build
+dist/
+build/
+.expo/
+.expo-shared/
+
+# Mobile (Expo - 별도 개발)
+mobile/node_modules/
+mobile/.expo/

@@ -1,0 +1,59 @@
+{
+  "examId": "exam_2026_ENG_M2_UNIT1",
+  "title": "중2 영어 1단원 평가(예시)",
+  "subject": "English",
+  "grade": 8,
+  "version": 1,
+  "totalScore": 50,
+  "layout": {
+    "templateId": "tmpl_a4_v1",
+    "pageSize": "A4",
+    "pages": 1,
+    "anchors": {
+      "topLeftMarker": true,
+      "qrForExamId": true
+    }
+  },
+  "questions": [
+    {
+      "questionId": "q1",
+      "no": 1
+    },
+    {
+      "questionId": "q2",
+      "no": 2
+    },
+    {
+      "questionId": "q3",
+      "no": 3
+    },
+    {
+      "questionId": "q4",
+      "no": 4
+    },
+    {
+      "questionId": "q5",
+      "no": 5
+    },
+    {
+      "questionId": "q6",
+      "no": 6
+    },
+    {
+      "questionId": "q7",
+      "no": 7
+    },
+    {
+      "questionId": "q8",
+      "no": 8
+    },
+    {
+      "questionId": "q9",
+      "no": 9
+    },
+    {
+      "questionId": "q10",
+      "no": 10
+    }
+  ]
+}

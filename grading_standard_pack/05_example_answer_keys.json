@@ -1,0 +1,115 @@
+[
+  {
+    "questionId": "q1",
+    "type": "mcq",
+    "correct": "②",
+    "accept": [
+      "2",
+      "②",
+      "B"
+    ]
+  },
+  {
+    "questionId": "q2",
+    "type": "mcq",
+    "correct": "④",
+    "accept": [
+      "4",
+      "④",
+      "D"
+    ]
+  },
+  {
+    "questionId": "q3",
+    "type": "short",
+    "modelAnswer": "He went to school yesterday.",
+    "acceptable": [
+      "He went to school yesterday",
+      "He went to school yesterday."
+    ],
+    "normalize": {
+      "caseFold": true,
+      "trim": true,
+      "collapseSpaces": true,
+      "stripPunctuation": true
+    }
+  },
+  {
+    "questionId": "q4",
+    "type": "short",
+    "modelAnswer": "plays",
+    "acceptable": [
+      "plays"
+    ],
+    "normalize": {
+      "caseFold": true,
+      "trim": true,
+      "collapseSpaces": true,
+      "stripPunctuation": true
+    }
+  },
+  {
+    "questionId": "q5",
+    "type": "short",
+    "modelAnswer": "I went to school.",
+    "acceptable": [
+      "I went to school",
+      "I went to school."
+    ],
+    "normalize": {
+      "caseFold": true,
+      "trim": true,
+      "collapseSpaces": true,
+      "stripPunctuation": true
+    }
+  },
+  {
+    "questionId": "q6",
+    "type": "short",
+    "modelAnswer": "(varies)",
+    "acceptable": [],
+    "normalize": {
+      "caseFold": true,
+      "trim": true,
+      "collapseSpaces": true,
+      "stripPunctuation": true
+    }
+  },
+  {
+    "questionId": "q7",
+    "type": "short",
+    "modelAnswer": "(varies)",
+    "acceptable": [],
+    "normalize": {
+      "caseFold": true,
+      "trim": true,
+      "collapseSpaces": true,
+      "stripPunctuation": true
+    }
+  },
+  {
+    "questionId": "q8",
+    "type": "essay",
+    "modelAnswer": "(varies)"
+  },
+  {
+    "questionId": "q9",
+    "type": "essay",
+    "modelAnswer": "(varies)"
+  },
+  {
+    "questionId": "q10",
+    "type": "short",
+    "modelAnswer": "I went to the library with my friend yesterday.",
+    "acceptable": [
+      "I went to the library with my friend yesterday",
+      "I went to the library with my friend yesterday."
+    ],
+    "normalize": {
+      "caseFold": true,
+      "trim": true,
+      "collapseSpaces": true,
+      "stripPunctuation": true
+    }
+  }
+]

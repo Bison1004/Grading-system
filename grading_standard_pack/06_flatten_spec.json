@@ -1,0 +1,73 @@
+{
+  "purpose_ko": "노코드 앱에서 리스트/카드로 쉽게 뿌릴 수 있도록 result를 평탄화하는 표준 포맷",
+  "result_flat": {
+    "submissionId": "string",
+    "examId": "string",
+    "studentId": "string",
+    "status": "queued|processing|done|failed",
+    "totalScore": "number",
+    "maxScore": "number",
+    "items": [
+      {
+        "questionNo": "number",
+        "questionId": "string",
+        "type": "mcq|short|essay",
+        "maxScore": "number",
+        "autoScore": "number",
+        "finalScore": "number",
+        "studentAnswerText": "string",
+        "correctAnswerText": "string?",
+        "modelAnswerText": "string?",
+        "explanation_ko": "string",
+        "tips_ko": "string",
+        "needsReview": "boolean",
+        "confidence": "number?"
+      }
+    ]
+  },
+  "glide_mapping_ko": [
+    {
+      "field": "items",
+      "render": "Inline List / Relation",
+      "note": "questionNo를 제목으로 카드 리스트"
+    },
+    {
+      "field": "items[].finalScore",
+      "render": "Number"
+    },
+    {
+      "field": "items[].explanation_ko",
+      "render": "Text"
+    },
+    {
+      "field": "items[].tips_ko",
+      "render": "Text"
+    },
+    {
+      "field": "items[].needsReview",
+      "render": "Boolean + Badge"
+    }
+  ],
+  "thunkable_mapping_ko": [
+    {
+      "field": "items",
+      "render": "List Viewer datasource"
+    },
+    {
+      "field": "items[].questionNo",
+      "render": "Label"
+    },
+    {
+      "field": "items[].finalScore",
+      "render": "Label"
+    },
+    {
+      "field": "items[].explanation_ko",
+      "render": "Multiline Label"
+    },
+    {
+      "field": "items[].tips_ko",
+      "render": "Multiline Label"
+    }
+  ]
+}
