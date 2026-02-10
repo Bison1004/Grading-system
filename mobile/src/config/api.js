@@ -41,8 +41,8 @@ const getBaseUrl = () => {
     // fallback: 같은 호스트
     return `http://localhost:${SERVER_PORT}`;
   }
-  // Production
-  return 'https://api.exam-grading.example.com';
+  // Production - Render.com 클라우드 서버
+  return 'https://exam-grading-app-sjem.onrender.com';
 };
 
 const API_CONFIG = {
