@@ -7,7 +7,6 @@ services:
     rootDir: backend
     buildCommand: npm ci || npm install
     startCommand: node src/server.js
-    nodeVersion: "20.11.0"
     envVars:
       - key: NODE_ENV
         value: production
