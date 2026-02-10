@@ -20,16 +20,23 @@ const gradingRoutes = require('./routes/gradingRoutes');
 
 const app = express();
 
+// Render 등 프록시 환경 지원
+if (config.nodeEnv === 'production') {
+  app.set('trust proxy', 1);
+}
+
 // ========== 미들웨어 ==========
 
-// 보안 헤더 (로컬 네트워크 앱이므로 CSP 완화)
+// 보안 헤더
 app.use(helmet({
   crossOriginResourcePolicy: { policy: 'cross-origin' },
   contentSecurityPolicy: false,
 }));
 
 // 요청 로그
-if (config.nodeEnv !== 'test') {
+if (config.nodeEnv === 'production') {
+  app.use(morgan('combined'));
+} else if (config.nodeEnv !== 'test') {
   app.use(morgan('dev'));
 }
 
@@ -191,6 +198,14 @@ app.use('/api/v1/exam', examRoutes);
 app.use('/api/v1/ocr', ocrRoutes);
 app.use('/api/v1/grading', gradingRoutes);
 
+// ========== API 404 핸들러 (API 경로에만 적용) ==========
+app.use('/api', (req, res) => {
+  res.status(404).json({
+    success: false,
+    error: { code: 'NOT_FOUND', message: `${req.method} ${req.originalUrl} - 요청한 API를 찾을 수 없습니다.` },
+  });
+});
+
 // ========== 에러 핸들링 ==========
 
 // Multer 에러 핸들링
@@ -224,30 +239,20 @@ app.use((err, req, res, next) => {
   });
 });
 
-// 404 핸들러
-app.use((req, res) => {
-  res.status(404).json({
-    success: false,
-    error: { code: 'NOT_FOUND', message: `${req.method} ${req.path} - 요청한 리소스를 찾을 수 없습니다.` },
-  });
-});
-
 // ========== 서버 시작 ==========
-app.listen(config.port, config.host, () => {
-  console.log('');
-  console.log('╔════════════════════════════════════════════════╗');
-  console.log('║   📝 영어시험 자동 채점 서버                    ║');
-  console.log('╠════════════════════════════════════════════════╣');
-  console.log(`║  🚀 서버: http://${config.host}:${config.port}            ║`);
-  console.log(`║  📋 환경: ${config.nodeEnv.padEnd(36)}║`);
-  console.log(`║  🔍 OCR: ${config.ocr.mode.padEnd(37)}║`);
-  console.log(`║  🤖 AI:  ${config.ai.mode.padEnd(37)}║`);
-  console.log(`║  💾 DB:  SQLite                                ║`);
-  console.log('╚════════════════════════════════════════════════╝');
-  console.log('');
-  console.log(`  Health: http://localhost:${config.port}/health`);
-  console.log(`  API:    http://localhost:${config.port}/api/v1/`);
-  console.log('');
+const PORT = config.port;
+const HOST = config.host;
+
+app.listen(PORT, HOST, () => {
+  console.log(`[Server] Started on http://${HOST}:${PORT}`);
+  console.log(`[Server] Environment: ${config.nodeEnv}`);
+  console.log(`[Server] OCR: ${config.ocr.mode}, AI: ${config.ai.mode}`);
+
+  if (config.nodeEnv !== 'production') {
+    const localIP = getLocalIP();
+    console.log(`[Server] Local: http://localhost:${PORT}`);
+    console.log(`[Server] Network: http://${localIP}:${PORT}`);
+  }
 });
 
 module.exports = app;

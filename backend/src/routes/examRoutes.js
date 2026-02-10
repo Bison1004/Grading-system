@@ -4,7 +4,7 @@ const fs = require('fs');
 const { v4: uuidv4 } = require('uuid');
 const db = require('../config/database');
 const upload = require('../middleware/upload');
-const { optionalAuth } = require('../middleware/auth');
+const { authMiddleware, optionalAuth } = require('../middleware/auth');
 const imageService = require('../services/imageService');
 
 const router = express.Router();
@@ -142,12 +142,20 @@ router.get('/', optionalAuth, (req, res) => {
 /**
  * DELETE /api/v1/exam/:examId - 시험 삭제
  */
-router.delete('/:examId', optionalAuth, (req, res) => {
+router.delete('/:examId', authMiddleware, (req, res) => {
   const exam = db.prepare('SELECT * FROM exams WHERE id = ?').get(req.params.examId);
   if (!exam) {
     return res.status(404).json({
       success: false,
       error: { code: 'NOT_FOUND', message: '시험을 찾을 수 없습니다.' },
+    });
+  }
+
+  // 본인 시험만 삭제 가능 (관리자 또는 소유자)
+  if (exam.user_id && exam.user_id !== req.user.id && req.user.role !== 'admin') {
+    return res.status(403).json({
+      success: false,
+      error: { code: 'FORBIDDEN', message: '본인의 시험만 삭제할 수 있습니다.' },
     });
   }
 

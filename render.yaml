@@ -1,0 +1,32 @@
+services:
+  - type: web
+    name: exam-grading-app
+    runtime: node
+    region: singapore
+    plan: free
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: node src/server.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: HOST
+        value: 0.0.0.0
+      - key: JWT_SECRET
+        generateValue: true
+      - key: OCR_MODE
+        value: mock
+      - key: AI_MODE
+        value: mock
+      - key: UPLOAD_DIR
+        value: /tmp/uploads
+      - key: DB_PATH
+        value: /tmp/data/exam_grading.db
+      - key: ALLOWED_ORIGINS
+        value: "*"
+      - key: FUZZY_MATCH_THRESHOLD
+        value: "0.7"
+      - key: SHORT_ANSWER_THRESHOLD
+        value: "0.8"

@@ -1,20 +1,45 @@
 import { Platform } from 'react-native';
+import Constants from 'expo-constants';
 
 // 서버 IP 설정
 // Android 에뮬레이터: 10.0.2.2
 // iOS 시뮬레이터: localhost
 // 실기기: 컴퓨터 IP 주소
+//
+// 자동 감지가 안 될 경우 아래 값을 직접 수정하세요:
+const MANUAL_SERVER_IP = null; // 예: '192.168.0.100'
+const SERVER_PORT = 3001;
+
 const getBaseUrl = () => {
+  // 수동 설정이 있으면 우선 사용
+  if (MANUAL_SERVER_IP) {
+    return `http://${MANUAL_SERVER_IP}:${SERVER_PORT}`;
+  }
+
   if (__DEV__) {
     if (Platform.OS === 'android') {
       // Android 에뮬레이터
-      return 'http://10.0.2.2:3001';
+      return `http://10.0.2.2:${SERVER_PORT}`;
     }
     if (Platform.OS === 'ios') {
-      return 'http://localhost:3001';
+      return `http://localhost:${SERVER_PORT}`;
     }
-    // 웹 또는 실기기 - 같은 네트워크 IP 사용
-    return 'http://192.168.5.228:3001'; // 실제 로컬 IP
+
+    // 웹 또는 실기기 - Expo debuggerHost에서 IP 자동 감지
+    try {
+      const debuggerHost = Constants.expoConfig?.hostUri
+        || Constants.manifest?.debuggerHost
+        || Constants.manifest2?.extra?.expoGo?.debuggerHost;
+      if (debuggerHost) {
+        const ip = debuggerHost.split(':')[0];
+        return `http://${ip}:${SERVER_PORT}`;
+      }
+    } catch (e) {
+      console.warn('서버 IP 자동 감지 실패:', e.message);
+    }
+
+    // fallback: 같은 호스트
+    return `http://localhost:${SERVER_PORT}`;
   }
   // Production
   return 'https://api.exam-grading.example.com';
